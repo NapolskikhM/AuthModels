@@ -1,0 +1,14 @@
+<!-- главная страница  -->
+
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <h1>Главная</h1>
+    <br>
+    <a href="{% url 'home' %}">Вход</a>
+    <br>
+    <br>
+    <a href="{% url 'signup' %}">Регистрация</a>
+{% endblock content %}
