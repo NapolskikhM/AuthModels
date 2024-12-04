@@ -14,17 +14,43 @@
 Имеются страница входа и страница, закрытая для несанкционированного доступа. Также предусмотрена работа сайта администратора.
 
             ​ 	Base authentication
+            
 Базовая аутентификация — один из самых простых способов реализации аутентификации. Во фреймворке Django REST (DRF) базовая аутентификация использует заголовки HTTP, в которых учетные данные пользователя отправляются в виде строк в кодировке base64. Используется класс BasicAuthentication DRF. Используется стандартная форма регистрации.
 ![Baselogin](https://github.com/user-attachments/assets/df1623cf-35f3-4af9-b0e6-113054291178)
 
 
             ​ Session-based authentication
+            
 Этот метод аутентификации использует встроенную структуру сессий Django для аутентификации пользователей. Он требует использования файлов cookie для поддержания состояния сеанса. Применяется класс SessionAuthentication DRF. 
 
             ​ 	JWT authentication
+            
 JWT (JSON Web Tokens) - это закодированная строка JSON, которая передается в заголовках для аутентификации запросов. 
 Для реализации метода использован пакет Simple JWT.
 Для отладки и проверки приложения использовано приложение Postman.
 
+Запрос на аутентификацию зарегистрированного пользователя:
+![JWT1](https://github.com/user-attachments/assets/2a4db53b-dd6c-4068-936a-36b5017d2a98)
+
+Полученный  access token используется для аутентификации:
+![JWT2](https://github.com/user-attachments/assets/c7f3a3c9-27d8-4e91-b76b-3b0ecbcfa424)
+
+Получаем доступ к закрытому ресурсу:
+![JWT3](https://github.com/user-attachments/assets/76f4694b-63a2-4a2a-b0ca-7e0b9ddd6a3d)
+
+
+
             ​ 	Email authentication
+            
 Реализована возможность пользователя залогиниться, используя электронную почту, не вспоминая свои username и password. Для формирования и отправки письма использована функция Django send_mail. Создана кастомная страница регистрации с проверкой наличия username в базе. Для организации ограниченного доступа использован класс  IsAuthenticated. Для отладки приложения использована настройка в settings: EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'.
+
+На странице входа водится адрес электронной почты:
+![MailAuth1](https://github.com/user-attachments/assets/2c547b3d-89f7-4b88-9b6a-49c136a5f7a8)
+
+На почту (в консоль) приходит письмо с кодом:
+![MailAuth2](https://github.com/user-attachments/assets/b606b0ca-bedb-48b9-a842-bc16f378a22a)
+
+После введения кода пользователь получает доступ к закрытой странице:
+![MailAuth3](https://github.com/user-attachments/assets/41c12a93-6431-46d1-9bc9-97991d764e12)
+
+
