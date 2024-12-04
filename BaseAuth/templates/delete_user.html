@@ -1,0 +1,15 @@
+<!-- страница подтверждения удаления учетной записи пользователя  -->
+
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+  <h2>Вы действительно желаете удалить свою учетную запись?</h2>
+  <br>
+  <br>
+  <a href="{% url 'home' %}">Нет</a>
+  &nbsp;
+  &nbsp;
+  <a href="{% url 'deleted_user' %}">Да</a>
+{% endblock %}
